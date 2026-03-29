@@ -1,0 +1,56 @@
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MaterialApp(
+    home: MiPaginaPrincipal(),
+    debugShowCheckedModeBanner: false,
+  ));
+}
+
+class MiPaginaPrincipal extends StatefulWidget {
+  const MiPaginaPrincipal({super.key});
+
+  @override
+  State<MiPaginaPrincipal> createState() => _MiPaginaPrincipalState();
+}
+
+class _MiPaginaPrincipalState extends State<MiPaginaPrincipal> {
+  bool mostrarTexto = true;
+
+  void miFuncion() {
+    setState(() {
+      mostrarTexto = !mostrarTexto;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Ejercicio mostrar-ocultar'),
+        backgroundColor: Colors.orange,
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            
+            if (mostrarTexto == true) 
+              const Text(
+                '¡Hola!', 
+                style: TextStyle(fontSize: 30, color: Colors.blue),
+              ),
+
+            
+            const SizedBox(height: 30),
+      ElevatedButton(
+              onPressed: miFuncion,
+              child: Text(mostrarTexto ? 'OCULTAR' : 'MOSTRAR'), 
+            ),
+
+          ],
+        ),
+      ),
+    );
+  }
+}
